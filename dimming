@@ -1,0 +1,20 @@
+int ledPin = 9;
+int sensorPin = A0;
+int val = 0;
+
+void setup()
+{
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  val = analogRead(sensorPin);
+  
+  val = map(val, 700,925, 0, 255);
+  if(val<0)val=0;
+  Serial.println(val);
+  delay(100);
+  analogWrite(ledPin, val);
+}
